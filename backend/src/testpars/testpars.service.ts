@@ -9,31 +9,14 @@ import { JSDOM } from 'jsdom';
 @Injectable()
 export class TestparsService {
   async findAll() {
-    // const lines = await fetch('https://www.marathonbet.ru/su/betting/Football/England/Premier+League+-+21520');
-    // var currentPage = response.data; // Запись полученного результата
-    // console.log(lines);
-    // const dom = new JSDOM(lines);
-    // console.log(dom);
-
-    // axios
-    //   .get(
-    //     'https://www.marathonbet.ru/su/betting/Football/England/Premier+League+-+21520',
-    //   )
-    //   .then((response) => {
-    //     const currentPage = response.data;
-    //     console.log(currentPage);
-    //   });
-
+    
     const response = await axios.get(
       'https://www.marathonbet.ru/su/betting/Football/England/Premier+League+-+21520',
     );
     const currentPage = response.data;
-    // console.log(currentPage);
-
-    // const dom = new JSDOM(currentPage); // Инициализация библиотеки jsdom для разбора полученных HTML-данных, как в браузере
     const dom = new JSDOM('<body><div id="content"><p>Чтото там написано</p></div></body>'); 
     const document = dom.window.document
-    console.log(document.querySelector("p").textContent); 
+    console.log(document.querySelector("a").textContent); 
 
     // console.log(dom);
     // Определение количества ссылок на странице, потому что оно у них не всегда фиксированное. Это значение понадобится в цикле ниже
