@@ -9,23 +9,18 @@ import { JSDOM } from 'jsdom';
 @Injectable()
 export class TestparsService {
   async findAll() {
-    
+    // "category-header"
+    // https://www.marathonbet.ru/su/betting/Football
     const response = await axios.get(
-      'https://www.marathonbet.ru/su/betting/Football/England/Premier+League+-+21520',
+      'https://www.marathonbet.ru/su/betting/Football/',
     );
     const currentPage = response.data;
-    const dom = new JSDOM('<body><div id="content"><p>Чтото там написано</p></div></body>'); 
-    const document = dom.window.document
-    console.log(document.querySelector("a").textContent); 
-
-    // console.log(dom);
-    // Определение количества ссылок на странице, потому что оно у них не всегда фиксированное. Это значение понадобится в цикле ниже
-    // const aaa = dom.window.document
-    //   .getElementById('block-views-articles-latest-on-front-block')
-    //   .getElementsByClassName('view-content')[0]
-    //   .getElementsByClassName('flex-teaser-square').length;
-    // Перебор и запись всех статей на выбр
-
-    return `This action returns all testpars`;
+    
+    console.log('111'); 
+    console.log(currentPage);
+    console.log('222'); 
+    
+    
+    return document;
   }
 }
